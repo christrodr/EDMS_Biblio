@@ -34,11 +34,26 @@ return [
                     ],
                 ],
             ],
+	    'section' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route' => '/section[/:action[/:id]]',
+                    'constraints' => [
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id'     => '[0-9]+',
+                    ],
+                    'defaults' => [
+                        'controller' => Controller\SectionController::class,
+                        'action'     => 'index',
+                    ],
+                ],
+            ],
         ],
     ],
     'controllers' => [
         'factories' => [
             Controller\IndexController::class => InvokableFactory::class,
+            Controller\SectionController::class => InvokableFactory::class,
         ],
     ],
     'view_manager' => [
