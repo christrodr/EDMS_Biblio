@@ -38,4 +38,16 @@ class Module implements ConfigProviderInterface {
 	];
     }
 
+    public function getControllerConfig() {
+	return [
+	    'factories' => [
+		Controller\SectionController::class => function($container) {
+		    return new Controller\SectionController(
+			    $container->get(Model\SectionTable::class)
+		    );
+		},
+	    ],
+	];
+    }
+
 }
