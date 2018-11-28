@@ -12,4 +12,10 @@
  */
 
 return [
+    'db' => [
+        'driver' => 'Mysqli',
+        'database' => '****',
+        'username' => '****',
+        'password' => '****',
+    ],
 ];
