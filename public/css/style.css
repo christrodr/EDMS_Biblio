@@ -3,8 +3,11 @@ body {
     padding-bottom: 40px;
 }
 
-.zf-green {
+/*.zf-green {
     color: #68b604;
+}*/
+.edms-blue {
+    color: #00448f;
 }
 
 .btn-success {
