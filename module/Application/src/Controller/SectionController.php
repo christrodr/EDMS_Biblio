@@ -8,27 +8,34 @@
 
 namespace Application\Controller;
 
+use Application\Model\SectionTable;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
 class SectionController extends AbstractActionController {
 
+    private $table;
+
+    public function __construct(SectionTable $table) {
+	$this->table = $table;
+    }
+
     public function indexAction() {
 	return new ViewModel();
     }
-    
+
     public function listAction() {
 	return new ViewModel();
     }
-    
+
     public function addAction() {
 	return new ViewModel();
     }
-    
+
     public function editAction() {
 	return new ViewModel();
     }
-    
+
     public function archiveAction() {
 	return new ViewModel();
     }
