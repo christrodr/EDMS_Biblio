@@ -1,10 +1,25 @@
-<div class="jumbotron">
-    <h1><span class="edms-blue">Bibliothèque edms</span></h1>
+<?php
 
-    <p>
-        Edms,<br />
-	La bibliothèque regroupe nos documentations papiers, documentations numérisées, références internet de fournisseurs, normes SIA et nos archives.<br />
-	Vous pouvez réaliser vos recherches par catégories de documents ou types de documents.<br />
-	Enfin sous « TOUS LES DOCUMENTS » vous réaliserez des recherches par mots clés. 
-    </p>
-</div>
+$title = 'Liste des sections';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<p>
+    <a href="<?= $this->url('section', ['action' => 'add']) ?>">Créer une nouvelle section</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>Nom de section</th>
+    <th>&nbsp;</th>
+</tr>
+<?php foreach ($sections as $section) : ?>
+    <tr>
+        <td><?= $this->escapeHtml($section->nom) ?></td>
+        <td>
+            <a href="<?= $this->url('section', ['action' => 'edit', 'id' => $section->id]) ?>">Modifier</a>
+            <a href="<?= $this->url('section', ['action' => 'archive', 'id' => $section->id]) ?>">Archiver</a>
+        </td>
+    </tr>
+<?php endforeach; ?>
+</table>

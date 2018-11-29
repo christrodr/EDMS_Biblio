@@ -25,7 +25,9 @@ class SectionController extends AbstractActionController {
     }
 
     public function listAction() {
-	return new ViewModel();
+	return new ViewModel([
+	    'sections'=> $this->table->fetchAll(),
+	]);
     }
 
     public function addAction() {
