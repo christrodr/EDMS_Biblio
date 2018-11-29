@@ -1,0 +1,17 @@
+{
+    "sProcessing": "Patientez SVP...",
+    "sLengthMenu": "Afficher _MENU_ résultats",
+    "sZeroRecords": "Aucun résultat.",
+    "sInfo": "_START_ à _END_ sur _TOTAL_ résultats",
+    "sInfoEmpty": "0 à 0 sur 0 résultat",
+    "sInfoFiltered": "(Filtre sur _MAX_ résultats)",
+    "sInfoPostFix": "",
+    "sSearch": "Rechercher / Mots cles",
+    "sUrl": "",
+    "oPaginate": {
+            "sFirst":    "Prem.",
+            "sPrevious": "Préc.",
+            "sNext":     "Suiv.",
+            "sLast":     "Dern."
+    }
+}
