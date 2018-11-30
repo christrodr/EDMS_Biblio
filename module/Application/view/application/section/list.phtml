@@ -1,5 +1,4 @@
 <?php
-
 $title = 'Liste des sections';
 $this->headTitle($title);
 ?>
@@ -8,18 +7,22 @@ $this->headTitle($title);
     <a href="<?= $this->url('section', ['action' => 'add']) ?>">Créer une nouvelle section</a>
 </p>
 
-<table class="table">
-<tr>
-    <th>Nom de section</th>
-    <th>&nbsp;</th>
-</tr>
-<?php foreach ($sections as $section) : ?>
-    <tr>
-        <td><?= $this->escapeHtml($section->nom) ?></td>
-        <td>
-            <a href="<?= $this->url('section', ['action' => 'edit', 'id' => $section->id]) ?>">Modifier</a>
-            <a href="<?= $this->url('section', ['action' => 'archive', 'id' => $section->id]) ?>">Archiver</a>
-        </td>
-    </tr>
-<?php endforeach; ?>
+<table class="table table-striped table-bordered" id="sectionsList">
+    <thead>
+	<tr>
+	    <th>Nom de section</th>
+	    <th>&nbsp;</th>
+	</tr>
+    </thead>
+    <tbody>
+	<?php foreach ($sections as $section) : ?>
+    	<tr>
+    	    <td><?= $this->escapeHtml($section->nom) ?></td>
+    	    <td>
+		<a class="btn btn-primary" role="button" href="<?= $this->url('section', ['action' => 'edit', 'id' => $section->id]) ?>"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Modifier</a>
+		<a class="btn btn-danger" role="button" href="<?= $this->url('section', ['action' => 'archive', 'id' => $section->id]) ?>"><span class="glyphicon glyphicon-remove"></span>&nbsp;Archiver</a>
+    	    </td>
+    	</tr>
+	<?php endforeach; ?>
+    </tbody>
 </table>
