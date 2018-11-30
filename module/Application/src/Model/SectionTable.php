@@ -10,6 +10,7 @@ namespace Application\Model;
 
 use RuntimeException;
 use Zend\Db\TableGateway\TableGatewayInterface;
+use Zend\Mvc\Plugin\FlashMessenger\FlashMessenger;
 
 class SectionTable {
 
@@ -39,13 +40,15 @@ class SectionTable {
     public function saveSection(Section $section) {
 	$data = [
 	    'nom' => $section->nom,
-	    'archiver' => $section->archiver,
+	    'archiver' => 'non',
 	];
 
 	$id = (int) $section->id;
 
 	if ($id === 0) {
 	    $this->tableGateway->insert($data);
+	    $message=new FlashMessenger();
+	    $message->addSuccessMessage('OK');
 	    return;
 	}
 
