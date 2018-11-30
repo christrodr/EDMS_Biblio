@@ -11,6 +11,8 @@ namespace Application\Controller;
 use Application\Model\SectionTable;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Application\Form\SectionForm;
+use Application\Model\Section;
 
 class SectionController extends AbstractActionController {
 
@@ -31,7 +33,26 @@ class SectionController extends AbstractActionController {
     }
 
     public function addAction() {
-	return new ViewModel();
+	$form=new SectionForm();
+	$form->get('submit')->setValue('Créer');
+	
+	$request= $this->getRequest();
+	
+	if(!$request->isPost()){
+	    return['form'=>$form];
+	}
+	
+	$section=new Section();
+	$form->setInputFilter($section->getInputFilter());
+	$form->setData($request->getPost());
+	
+	if(!$form->isValid()){
+	    return['form'=>$form];
+	}
+	
+	$section->exchangeArray($form->getData());
+	$this->table->saveSection($section);
+	return $this->redirect()->toRoute('section/list');
     }
 
     public function editAction() {
