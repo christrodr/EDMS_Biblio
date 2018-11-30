@@ -24,7 +24,7 @@ class SectionForm extends Form {
 	    'name' => 'nom',
 	    'type' => 'text',
 	    'options' => [
-		'label' => 'Title',
+		'label' => 'Nom de la section',
 	    ],
 	]);
 	$this->add([
