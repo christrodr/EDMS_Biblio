@@ -52,7 +52,7 @@ class SectionController extends AbstractActionController {
 	
 	$section->exchangeArray($form->getData());
 	$this->table->saveSection($section);
-	return $this->redirect()->toRoute('section/list');
+	return $this->redirect()->toRoute('section',['action' => 'list']);
     }
 
     public function editAction() {
