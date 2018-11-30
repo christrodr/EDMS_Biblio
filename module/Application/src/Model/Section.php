@@ -25,7 +25,7 @@ class Section implements InputFilterAwareInterface {
     private $inputFilter;
 
     public function exchangeArray(array $data) {
-	$this->id = !empty($data['id_Section']) ? $data['id_Section'] : null;
+	$this->id = !empty($data['id']) ? $data['id'] : null;
 	$this->nom = !empty($data['nom']) ? $data['nom'] : null;
 	$this->archiver = !empty($data['archiver']) ? $data['archiver'] : null;
     }
