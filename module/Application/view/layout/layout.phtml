@@ -54,7 +54,7 @@
         </nav>
 	<?php
 	echo $this->flashMessenger()->render('success', array('alert', 'alert-dismissible', 'alert-success'));
-	echo $this->flashMessenger()->render('error', array('alert', 'alert-dismissible', 'alert-success'));
+	echo $this->flashMessenger()->render('error', array('alert', 'alert-dismissible', 'alert-danger'));
 	?>
         <div class="container">
 	    <?= $this->content ?>
