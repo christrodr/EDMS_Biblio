@@ -36,6 +36,19 @@ class SectionTable {
 
 	return $row;
     }
+    
+    public function getByNameSection($nom) {
+//	$id = (int) $id;
+	$rowset = $this->tableGateway->select(['nom' => $nom]);
+	$row = $rowset->current();
+	if (!$row) {
+	    throw new RuntimeException(sprintf(
+		    'Impossible de trouver une section avec cet identifiant %d', $id
+	    ));
+	}
+
+	return $row;
+    }
 
     public function saveSection(Section $section) {
 	$data = [
@@ -46,9 +59,16 @@ class SectionTable {
 	$id = (int) $section->id;
 
 	if ($id === 0) {
-	    $this->tableGateway->insert($data);
-	    $message=new FlashMessenger();
-	    $message->addSuccessMessage('La section "'.$data['nom'].'" à été créée.');
+	    if(!$this->getByNameSection($section->nom)){
+		$this->tableGateway->insert($data);
+		$message=new FlashMessenger();
+		$message->addSuccessMessage('La section "'.$data['nom'].'" à été créée.');
+	    }else{
+//		$this->tableGateway->insert($data);
+		$message=new FlashMessenger();
+		$message->addErrorMessage('La section "'.$data['nom'].'" existe déjà.');
+	    }
+	    
 	    return;
 	}
 
