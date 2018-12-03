@@ -48,7 +48,7 @@ class SectionTable {
 	if ($id === 0) {
 	    $this->tableGateway->insert($data);
 	    $message=new FlashMessenger();
-	    $message->addSuccessMessage('OK');
+	    $message->addSuccessMessage('La section "'.$data['nom'].'" à été créée.');
 	    return;
 	}
 
