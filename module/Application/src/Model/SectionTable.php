@@ -36,18 +36,13 @@ class SectionTable {
 
 	return $row;
     }
-    
+
     public function getByNameSection($nom) {
-//	$id = (int) $id;
 	$rowset = $this->tableGateway->select(['nom' => $nom]);
 	$row = $rowset->current();
-	if (!$row) {
-	    throw new RuntimeException(sprintf(
-		    'Impossible de trouver une section avec cet identifiant %d', $id
-	    ));
+	if ($row) {
+	    return $row;
 	}
-
-	return $row;
     }
 
     public function saveSection(Section $section) {
@@ -59,16 +54,16 @@ class SectionTable {
 	$id = (int) $section->id;
 
 	if ($id === 0) {
-	    if(!$this->getByNameSection($section->nom)){
+	    if (!$this->getByNameSection($section->nom)) {
 		$this->tableGateway->insert($data);
-		$message=new FlashMessenger();
-		$message->addSuccessMessage('La section "'.$data['nom'].'" à été créée.');
-	    }else{
+		$message = new FlashMessenger();
+		$message->addSuccessMessage('La section "' . $data['nom'] . '" à été créée.');
+	    } else {
 //		$this->tableGateway->insert($data);
-		$message=new FlashMessenger();
-		$message->addErrorMessage('La section "'.$data['nom'].'" existe déjà.');
+		$message = new FlashMessenger();
+		$message->addErrorMessage('La section "' . $data['nom'] . '" existe déjà.');
 	    }
-	    
+
 	    return;
 	}
 
@@ -83,15 +78,14 @@ class SectionTable {
 
     public function archiveSection($id) {
 	$id = (int) $section->id;
-	
+
 	if (!$this->getSection($id)) {
 	    throw new RuntimeException(sprintf(
 		    'La section avec cet identifiant %d; n\'existe pas', $id
 	    ));
 	}
-	
-	$this->tableGateway->update(['archiver'=>'oui'], ['id_Section' => $id]);
-	
+
+	$this->tableGateway->update(['archiver' => 'oui'], ['id_Section' => $id]);
     }
 
 }
