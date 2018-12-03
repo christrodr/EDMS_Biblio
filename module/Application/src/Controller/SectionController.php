@@ -56,7 +56,10 @@ class SectionController extends AbstractActionController {
     }
 
     public function editAction() {
-	return new ViewModel();
+	$id = (int) $this->params()->fromRoute('id', 0);
+	if (0 === $id) {
+            return $this->redirect()->toRoute('section', ['action' => 'add']);
+        }
     }
 
     public function archiveAction() {

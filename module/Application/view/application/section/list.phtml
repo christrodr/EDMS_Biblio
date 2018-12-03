@@ -17,7 +17,7 @@ $this->headTitle($title);
     <tbody>
 	<?php foreach ($sections as $section) : ?>
     	<tr>
-    	    <td><?= $this->escapeHtml($section->nom) ?></td>
+	    <td><?= $this->escapeHtml($section->nom)?></td>
     	    <td>
 		<a class="btn btn-primary" role="button" href="<?= $this->url('section', ['action' => 'edit', 'id' => $section->id]) ?>"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Modifier</a>
 		<a class="btn btn-danger" role="button" href="<?= $this->url('section', ['action' => 'archive', 'id' => $section->id]) ?>"><span class="glyphicon glyphicon-remove"></span>&nbsp;Archiver</a>
