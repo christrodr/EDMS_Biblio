@@ -30,6 +30,14 @@ class Section implements InputFilterAwareInterface {
 	$this->archiver = !empty($data['archiver']) ? $data['archiver'] : null;
     }
 
+    public function getArrayCopy() {
+	return [
+	    'id_Section' => $this->id,
+	    'nom' => $this->nom,
+	    'archiver' => $this->archiver,
+	];
+    }
+
     public function setInputFilter(InputFilterInterface $inputFilter) {
 	throw new DomainException(sprintf(
 		'%s does not allow injection of an alternate input filter', __CLASS__

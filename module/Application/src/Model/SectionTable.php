@@ -26,7 +26,7 @@ class SectionTable {
 
     public function getSection($id) {
 	$id = (int) $id;
-	$rowset = $this->tableGateway->select(['id_Categorie' => $id]);
+	$rowset = $this->tableGateway->select(['id_Section' => $id]);
 	$row = $rowset->current();
 	if (!$row) {
 	    throw new RuntimeException(sprintf(
@@ -50,7 +50,7 @@ class SectionTable {
 	    'nom' => $section->nom,
 	    'archiver' => 'non',
 	];
-
+	
 	$id = (int) $section->id;
 
 	if ($id === 0) {
@@ -72,8 +72,19 @@ class SectionTable {
 		    'La section avec cet identifiant %d; n\'existe pas', $id
 	    ));
 	}
-
-	$this->tableGateway->update($data, ['id_Section' => $id]);
+	
+	if (!$this->getByNameSection($section->nom)) {
+	    //recuperation de l'ancien nom
+	    $oldsection=$this->getSection($id);
+	    $oldname=$oldsection->nom;
+	    
+	    $this->tableGateway->update($data, ['id_Section' => $id]);
+	    $message = new FlashMessenger();
+	    $message->addSuccessMessage('La section "'.$oldname.'" à été modifiée en "'.$data['nom'].'".');
+	} else {
+	    $message = new FlashMessenger();
+	    $message->addErrorMessage('La section "' . $data['nom'] . '" existe déjà.');
+	}
     }
 
     public function archiveSection($id) {
