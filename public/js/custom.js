@@ -9,5 +9,10 @@ $(document).ready(function () {
             "sUrl": "/js/plugins/dataTable/fr_FR.txt"
         }
     });
+    $('#categoriesList').DataTable({
+        "oLanguage": {
+            "sUrl": "/js/plugins/dataTable/fr_FR.txt"
+        }
+    });
 });
 

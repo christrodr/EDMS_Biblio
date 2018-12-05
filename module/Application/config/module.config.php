@@ -50,6 +50,20 @@ return [
 		    ],
 		],
 	    ],
+	    'categorie' => [
+		'type' => Segment::class,
+		'options' => [
+		    'route' => '/categorie[/:action[/:id]]',
+		    'constraints' => [
+			'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+			'id' => '[0-9]+',
+		    ],
+		    'defaults' => [
+			'controller' => Controller\CategorieController::class,
+			'action' => 'index',
+		    ],
+		],
+	    ],
 	],
     ],
 //    'controllers' => [
@@ -84,7 +98,7 @@ return [
     'navigation' => [
 	'default' => [
 	    [
-		'label' => 'Section',
+		'label' => 'Sections',
 		'route' => 'section',
 		'action' => 'list',
 		'pages' => [
@@ -106,6 +120,33 @@ return [
 		    [
 			'label' => 'Archiver',
 			'route' => 'section',
+			'action' => 'archive',
+		    ],
+		],
+	    ],
+	    [
+		'label' => 'Categories',
+		'route' => 'categorie',
+		'action' => 'list',
+		'pages' => [
+		    [
+			'label' => 'Accueil categorie',
+			'route' => 'categorie',
+			'action' => 'index',
+		    ],
+		    [
+			'label' => 'Lister',
+			'route' => 'categorie',
+			'action' => 'list',
+		    ],
+		    [
+			'label' => 'Editer',
+			'route' => 'categorie',
+			'action' => 'edit',
+		    ],
+		    [
+			'label' => 'Archiver',
+			'route' => 'categorie',
 			'action' => 'archive',
 		    ],
 		],

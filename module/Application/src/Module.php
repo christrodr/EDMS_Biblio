@@ -34,6 +34,16 @@ class Module implements ConfigProviderInterface {
 		    $resultSetPrototype->setArrayObjectPrototype(new Model\Section());
 		    return new TableGateway('section', $dbAdapter, null, $resultSetPrototype);
 		},
+		Model\CategorieTable::class => function($container) {
+		    $tableGateway = $container->get(Model\CategorieTableGateway::class);
+		    return new Model\CategorieTable($tableGateway);
+		},
+		Model\CategorieTableGateway::class => function ($container) {
+		    $dbAdapter = $container->get(AdapterInterface::class);
+		    $resultSetPrototype = new ResultSet();
+		    $resultSetPrototype->setArrayObjectPrototype(new Model\Categorie());
+		    return new TableGateway('categorie', $dbAdapter, null, $resultSetPrototype);
+		},
 	    ],
 	];
     }
@@ -47,6 +57,11 @@ class Module implements ConfigProviderInterface {
 		Controller\SectionController::class => function($container) {
 		    return new Controller\SectionController(
 			    $container->get(Model\SectionTable::class)
+		    );
+		},
+		Controller\CategorieController::class => function($container) {
+		    return new Controller\CategorieController(
+			    $container->get(Model\CategorieTable::class)
 		    );
 		},
 	    ],

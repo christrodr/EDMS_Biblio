@@ -1,0 +1,16 @@
+<?php
+
+$title = 'Gestion des categories de la bibliothèque';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<p>
+    Dans cette partie de l'application vous pourrez faire vos recherches par categorie de la bibliothéque.<br />
+    Cliquez sur le nom de la categorie désirée pour lister les document de celle-ci.
+</p>
+<p>
+    <a class="btn btn-lg btn-primary" role="button" href="<?= $this->url('categorie', ['action' => 'add']) ?>">Categorie 1</a>
+    <a class="btn btn-lg btn-primary" role="button" href="<?= $this->url('categorie', ['action' => 'add']) ?>">Categorie 2</a>
+    <a class="btn btn-lg btn-primary" role="button" href="<?= $this->url('categorie', ['action' => 'add']) ?>">Categorie 3</a>
+    <a class="btn btn-lg btn-primary" role="button" href="<?= $this->url('categorie', ['action' => 'add']) ?>">Categorie 4</a>
+</p>
