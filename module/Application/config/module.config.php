@@ -125,7 +125,7 @@ return [
 		],
 	    ],
 	    [
-		'label' => 'Categories',
+		'label' => 'Catégories',
 		'route' => 'categorie',
 		'action' => 'list',
 		'pages' => [

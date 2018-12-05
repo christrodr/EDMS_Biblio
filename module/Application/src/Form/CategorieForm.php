@@ -24,7 +24,7 @@ class CategorieForm extends Form {
 	    'name' => 'nom',
 	    'type' => 'text',
 	    'options' => [
-		'label' => 'Nom de la categorie',
+		'label' => 'Nom de la catégorie',
 	    ],
 	]);
 	$this->add([
