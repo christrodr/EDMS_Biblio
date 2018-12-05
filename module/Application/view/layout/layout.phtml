@@ -6,30 +6,30 @@
 	<?= $this->headTitle('EDMS Biblio')->setSeparator(' - ')->setAutoEscape(false) ?>
 
 	<?=
-		$this->headMeta()
-		->appendName('viewport', 'width=device-width, initial-scale=1.0')
-		->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+	    $this->headMeta()
+	    ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+	    ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
 	?>
 
         <!-- Le styles -->
 	<?=
-		$this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'])
-		->prependStylesheet($this->basePath('css/style.css'))
-		->prependStylesheet('https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css')
+	    $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'])
+	    ->prependStylesheet($this->basePath('css/style.css'))
+	    ->prependStylesheet('https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css')
 //            ->prependStylesheet('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
-		->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
-		->prependStylesheet($this->basePath('css/bootstrap.min.css'))
+	    ->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
+	    ->prependStylesheet($this->basePath('css/bootstrap.min.css'))
 	?>
 
         <!-- Scripts -->
 	<?=
-		$this->headScript()
-		->prependFile($this->basePath('js/custom.js'))
-		->prependFile('https://cdn.datatables.net/plug-ins/1.10.19/filtering/type-based/accent-neutralise.js')
-		->prependFile('https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js')
-		->prependFile('https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js')
-		->prependFile($this->basePath('js/bootstrap.min.js'))
-		->prependFile($this->basePath('js/jquery-3.1.0.min.js'))
+	    $this->headScript()
+	    ->prependFile($this->basePath('js/custom.js'))
+	    ->prependFile('https://cdn.datatables.net/plug-ins/1.10.19/filtering/type-based/accent-neutralise.js')
+	    ->prependFile('https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js')
+	    ->prependFile('https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js')
+	    ->prependFile($this->basePath('js/bootstrap.min.js'))
+	    ->prependFile($this->basePath('js/jquery-3.1.0.min.js'))
 	?>
     </head>
     <body>
