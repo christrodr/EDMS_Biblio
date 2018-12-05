@@ -1,0 +1,28 @@
+<?php
+$title = 'Liste des types de documents';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<p>
+    <a href="<?= $this->url('typedoc', ['action' => 'add']) ?>">Créer un nouveau type de document</a>
+</p>
+
+<table class="table table-striped table-bordered" id="typedocsList">
+    <thead>
+	<tr>
+	    <th>Nom du type de document</th>
+	    <th>&nbsp;</th>
+	</tr>
+    </thead>
+    <tbody>
+	<?php foreach ($typedocs as $typedoc) : ?>
+    	<tr>
+	    <td><?= $this->escapeHtml($typedoc->nom)?></td>
+    	    <td>
+		<a class="btn btn-primary" role="button" href="<?= $this->url('typedoc', ['action' => 'edit', 'id' => $typedoc->id]) ?>"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Modifier</a>
+		<a class="btn btn-danger" role="button" href="<?= $this->url('typedoc', ['action' => 'archive', 'id' => $typedoc->id]) ?>"><span class="glyphicon glyphicon-remove"></span>&nbsp;Archiver</a>
+    	    </td>
+    	</tr>
+	<?php endforeach; ?>
+    </tbody>
+</table>

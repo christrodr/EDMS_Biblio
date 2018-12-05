@@ -44,6 +44,16 @@ class Module implements ConfigProviderInterface {
 		    $resultSetPrototype->setArrayObjectPrototype(new Model\Categorie());
 		    return new TableGateway('categorie', $dbAdapter, null, $resultSetPrototype);
 		},
+		Model\TypedocTable::class => function($container) {
+		    $tableGateway = $container->get(Model\TypedocTableGateway::class);
+		    return new Model\TypedocTable($tableGateway);
+		},
+		Model\TypedocTableGateway::class => function ($container) {
+		    $dbAdapter = $container->get(AdapterInterface::class);
+		    $resultSetPrototype = new ResultSet();
+		    $resultSetPrototype->setArrayObjectPrototype(new Model\Typedoc());
+		    return new TableGateway('typedoc', $dbAdapter, null, $resultSetPrototype);
+		},
 	    ],
 	];
     }
@@ -62,6 +72,11 @@ class Module implements ConfigProviderInterface {
 		Controller\CategorieController::class => function($container) {
 		    return new Controller\CategorieController(
 			    $container->get(Model\CategorieTable::class)
+		    );
+		},
+		Controller\TypedocController::class => function($container) {
+		    return new Controller\TypedocController(
+			    $container->get(Model\TypedocTable::class)
 		    );
 		},
 	    ],

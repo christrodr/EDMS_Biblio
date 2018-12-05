@@ -1,0 +1,16 @@
+<?php
+
+$title = 'Gestion des types de documents de la bibliothèque';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<p>
+    Dans cette partie de l'application vous pourrez faire vos recherches par type de document de la bibliothéque.<br />
+    Cliquez sur le nom du type de document désiré pour lister les documents de celui-ci.
+</p>
+<p>
+    <a class="btn btn-lg btn-primary" role="button" href="<?= $this->url('typedoc', ['action' => 'add']) ?>">Typedoc 1</a>
+    <a class="btn btn-lg btn-primary" role="button" href="<?= $this->url('typedoc', ['action' => 'add']) ?>">Typedoc 2</a>
+    <a class="btn btn-lg btn-primary" role="button" href="<?= $this->url('typedoc', ['action' => 'add']) ?>">Typedoc 3</a>
+    <a class="btn btn-lg btn-primary" role="button" href="<?= $this->url('typedoc', ['action' => 'add']) ?>">Typedoc 4</a>
+</p>

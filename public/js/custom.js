@@ -14,5 +14,10 @@ $(document).ready(function () {
             "sUrl": "/js/plugins/dataTable/fr_FR.txt"
         }
     });
+    $('#typedocsList').DataTable({
+        "oLanguage": {
+            "sUrl": "/js/plugins/dataTable/fr_FR.txt"
+        }
+    });
 });
 

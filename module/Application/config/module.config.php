@@ -64,6 +64,20 @@ return [
 		    ],
 		],
 	    ],
+	    'typedoc' => [
+		'type' => Segment::class,
+		'options' => [
+		    'route' => '/typedoc[/:action[/:id]]',
+		    'constraints' => [
+			'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+			'id' => '[0-9]+',
+		    ],
+		    'defaults' => [
+			'controller' => Controller\TypedocController::class,
+			'action' => 'index',
+		    ],
+		],
+	    ],
 	],
     ],
 //    'controllers' => [
@@ -147,6 +161,33 @@ return [
 		    [
 			'label' => 'Archiver',
 			'route' => 'categorie',
+			'action' => 'archive',
+		    ],
+		],
+	    ],
+	    [
+		'label' => 'Types de documents',
+		'route' => 'typedoc',
+		'action' => 'list',
+		'pages' => [
+		    [
+			'label' => 'Accueil type',
+			'route' => 'typedoc',
+			'action' => 'index',
+		    ],
+		    [
+			'label' => 'Lister',
+			'route' => 'typedoc',
+			'action' => 'list',
+		    ],
+		    [
+			'label' => 'Editer',
+			'route' => 'typedoc',
+			'action' => 'edit',
+		    ],
+		    [
+			'label' => 'Archiver',
+			'route' => 'typedoc',
 			'action' => 'archive',
 		    ],
 		],
