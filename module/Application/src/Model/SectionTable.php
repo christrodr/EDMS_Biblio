@@ -21,7 +21,7 @@ class SectionTable {
     }
 
     public function fetchAll() {
-	return $this->tableGateway->select();
+	return $this->tableGateway->select(['archiver' => 'non']);
     }
 
     public function getSection($id) {
@@ -88,14 +88,14 @@ class SectionTable {
     }
 
     public function archiveSection($id) {
-	$id = (int) $section->id;
 
 	if (!$this->getSection($id)) {
 	    throw new RuntimeException(sprintf(
 		    'La section avec cet identifiant %d; n\'existe pas', $id
 	    ));
 	}
-
+	$message = new FlashMessenger();
+	$message->addErrorMessage('La section "' . $this->getSection($id)->nom . '" a été archivée.');
 	$this->tableGateway->update(['archiver' => 'oui'], ['id_Section' => $id]);
     }
 
