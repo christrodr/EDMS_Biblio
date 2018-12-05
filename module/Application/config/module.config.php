@@ -81,4 +81,35 @@ return [
 	    'message_separator_string' => '</li><li>',
 	],
     ],
+    'navigation' => [
+	'default' => [
+	    [
+		'label' => 'Section',
+		'route' => 'section',
+		'action' => 'list',
+		'pages' => [
+		    [
+			'label' => 'Accueil section',
+			'route' => 'section',
+			'action' => 'index',
+		    ],
+		    [
+			'label' => 'Lister',
+			'route' => 'section',
+			'action' => 'list',
+		    ],
+		    [
+			'label' => 'Editer',
+			'route' => 'section',
+			'action' => 'edit',
+		    ],
+		    [
+			'label' => 'Archiver',
+			'route' => 'section',
+			'action' => 'archive',
+		    ],
+		],
+	    ],
+	],
+    ],
 ];
