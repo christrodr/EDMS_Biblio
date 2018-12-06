@@ -54,14 +54,18 @@ class CategorieTable {
 	$id = (int) $categorie->id;
 
 	if ($id === 0) {
-	    if (!$this->getByNameCategorie($categorie->nom)) {
+	    $existCategorie = $this->getByNameCategorie($categorie->nom);
+	    if (!$existCategorie) {
 		$this->tableGateway->insert($data);
 		$message = new FlashMessenger();
 		$message->addSuccessMessage('La catégorie "' . $data['nom'] . '" à été créée.');
 	    } else {
-//		$this->tableGateway->insert($data);
-		$message = new FlashMessenger();
-		$message->addErrorMessage('La catégorie "' . $data['nom'] . '" existe déjà.');
+		if ($existCategorie->archiver == 'oui') {
+		    $this->unarchiveCategorie($existCategorie->id);
+		} else {
+		    $message = new FlashMessenger();
+		    $message->addErrorMessage('La catégorie "' . $data['nom'] . '" existe déjà.');
+		}
 	    }
 
 	    return;
@@ -97,6 +101,18 @@ class CategorieTable {
 	$message = new FlashMessenger();
 	$message->addErrorMessage('La catégorie "' . $this->getCategorie($id)->nom . '" a été archivée.');
 	$this->tableGateway->update(['archiver' => 'oui'], ['id_Categorie' => $id]);
+    }
+    
+    public function unarchiveCategorie($id) {
+
+	if (!$this->getCategorie($id)) {
+	    throw new RuntimeException(sprintf(
+		    'La catégorie avec cet identifiant %d; n\'existe pas', $id
+	    ));
+	}
+	$message = new FlashMessenger();
+	$message->addSuccessMessage('La catégorie "' . $this->getSection($id)->nom . '" a été désarchivée.');
+	$this->tableGateway->update(['archiver' => 'non'], ['id_Categorie' => $id]);
     }
 
 }

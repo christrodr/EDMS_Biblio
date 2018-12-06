@@ -54,14 +54,18 @@ class TypedocTable {
 	$id = (int) $typedoc->id;
 
 	if ($id === 0) {
-	    if (!$this->getByNameTypedoc($typedoc->nom)) {
+	    $existTypedoc = $this->getByNameTypedoc($typedoc->nom);
+	    if (!$existTypedoc) {
 		$this->tableGateway->insert($data);
 		$message = new FlashMessenger();
 		$message->addSuccessMessage('Le type de document "' . $data['nom'] . '" à été créé.');
 	    } else {
-//		$this->tableGateway->insert($data);
-		$message = new FlashMessenger();
-		$message->addErrorMessage('Le type de document "' . $data['nom'] . '" existe déjà.');
+		if ($existTypedoc->archiver == 'oui') {
+		    $this->unarchiveTypedoc($existTypedoc->id);
+		} else {
+		    $message = new FlashMessenger();
+		    $message->addErrorMessage('Le type de document "' . $data['nom'] . '" existe déjà.');
+		}
 	    }
 
 	    return;
@@ -97,6 +101,18 @@ class TypedocTable {
 	$message = new FlashMessenger();
 	$message->addErrorMessage('Le type de document "' . $this->getTypedoc($id)->nom . '" a été archivé.');
 	$this->tableGateway->update(['archiver' => 'oui'], ['id_Typedoc' => $id]);
+    }
+    
+    public function unarchiveTypedoc($id) {
+
+	if (!$this->getTypedoc($id)) {
+	    throw new RuntimeException(sprintf(
+		    'Le type de document avec cet identifiant %d; n\'existe pas', $id
+	    ));
+	}
+	$message = new FlashMessenger();
+	$message->addSuccessMessage('Le type de document "' . $this->getSection($id)->nom . '" a été désarchivé.');
+	$this->tableGateway->update(['archiver' => 'non'], ['id_Typedoc' => $id]);
     }
 
 }

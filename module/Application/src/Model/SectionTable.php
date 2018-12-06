@@ -54,14 +54,18 @@ class SectionTable {
 	$id = (int) $section->id;
 
 	if ($id === 0) {
-	    if (!$this->getByNameSection($section->nom)) {
+	    $existSection = $this->getByNameSection($section->nom);
+	    if (!$existSection) {
 		$this->tableGateway->insert($data);
 		$message = new FlashMessenger();
 		$message->addSuccessMessage('La section "' . $data['nom'] . '" à été créée.');
 	    } else {
-//		$this->tableGateway->insert($data);
-		$message = new FlashMessenger();
-		$message->addErrorMessage('La section "' . $data['nom'] . '" existe déjà.');
+		if ($existSection->archiver == 'oui') {
+		    $this->unarchiveSection($existSection->id);
+		} else {
+		    $message = new FlashMessenger();
+		    $message->addErrorMessage('La section "' . $data['nom'] . '" existe déjà.');
+		}
 	    }
 
 	    return;
@@ -97,6 +101,18 @@ class SectionTable {
 	$message = new FlashMessenger();
 	$message->addErrorMessage('La section "' . $this->getSection($id)->nom . '" a été archivée.');
 	$this->tableGateway->update(['archiver' => 'oui'], ['id_Section' => $id]);
+    }
+    
+    public function unarchiveSection($id) {
+
+	if (!$this->getSection($id)) {
+	    throw new RuntimeException(sprintf(
+		    'La section avec cet identifiant %d; n\'existe pas', $id
+	    ));
+	}
+	$message = new FlashMessenger();
+	$message->addSuccessMessage('La section "' . $this->getSection($id)->nom . '" a été désarchivée.');
+	$this->tableGateway->update(['archiver' => 'non'], ['id_Section' => $id]);
     }
 
 }
