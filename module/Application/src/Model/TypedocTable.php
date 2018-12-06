@@ -111,7 +111,7 @@ class TypedocTable {
 	    ));
 	}
 	$message = new FlashMessenger();
-	$message->addSuccessMessage('Le type de document "' . $this->getSection($id)->nom . '" a été désarchivé.');
+	$message->addSuccessMessage('Le type de document "' . $this->getTypedoc($id)->nom . '" a été désarchivé.');
 	$this->tableGateway->update(['archiver' => 'non'], ['id_Typedoc' => $id]);
     }
 

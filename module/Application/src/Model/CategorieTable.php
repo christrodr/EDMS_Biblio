@@ -111,7 +111,7 @@ class CategorieTable {
 	    ));
 	}
 	$message = new FlashMessenger();
-	$message->addSuccessMessage('La catégorie "' . $this->getSection($id)->nom . '" a été désarchivée.');
+	$message->addSuccessMessage('La catégorie "' . $this->getCategorie($id)->nom . '" a été désarchivée.');
 	$this->tableGateway->update(['archiver' => 'non'], ['id_Categorie' => $id]);
     }
 
