@@ -1,0 +1,28 @@
+<?php
+$title = 'Liste des auteurs';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<p>
+    <a href="<?= $this->url('auteur', ['action' => 'add']) ?>">Créer un nouvel auteur</a>
+</p>
+
+<table class="table table-striped table-bordered" id="auteursList">
+    <thead>
+	<tr>
+	    <th>Nom de l'auteur</th>
+	    <th>&nbsp;</th>
+	</tr>
+    </thead>
+    <tbody>
+	<?php foreach ($auteurs as $auteur) : ?>
+    	<tr>
+	    <td><?= $this->escapeHtml($auteur->nom)?></td>
+    	    <td>
+		<a class="btn btn-primary" role="button" href="<?= $this->url('auteur', ['action' => 'edit', 'id' => $auteur->id]) ?>"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Modifier</a>
+		<a class="btn btn-danger" role="button" href="<?= $this->url('auteur', ['action' => 'archive', 'id' => $auteur->id]) ?>"><span class="glyphicon glyphicon-remove"></span>&nbsp;Archiver</a>
+    	    </td>
+    	</tr>
+	<?php endforeach; ?>
+    </tbody>
+</table>

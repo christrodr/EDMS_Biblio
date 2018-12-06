@@ -1,0 +1,29 @@
+<?php
+
+$title = 'Editer un auteur';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<?php
+$nom = $form->get('nom');
+$nom->setAttribute('class', 'form-control');
+$nom->setAttribute('placeholder', 'Nom de l\'auteur');
+
+$submit = $form->get('submit');
+$submit->setAttribute('class', 'btn btn-primary');
+
+$form->setAttribute('action', $this->url('auteur', ['action' => 'edit','id' => $id_Auteur,]));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+?>
+<div class="form-group">
+    <?= $this->formLabel($nom) ?>
+    <?= $this->formElement($nom) ?>
+    <?= $this->formElementErrors()->render($nom, ['class' => 'help-block']) ?>
+</div>
+
+<?php
+echo $this->formSubmit($submit);
+echo $this->formHidden($form->get('id'));
+echo $this->form()->closeTag();

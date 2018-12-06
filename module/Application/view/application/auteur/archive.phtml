@@ -1,0 +1,22 @@
+<?php
+// module/Album/view/album/album/delete.phtml:
+
+$title = 'Archiver un auteur';
+$url   = $this->url('auteur', ['action' => 'archive', 'id' => $id]);
+
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+
+<p>
+    Etes-vous sûr de vouloir archiver l'auteur :
+    "<?= $this->escapeHtml($auteur->nom) ?>" ?
+</p>
+
+<form action="<?= $url ?>" method="post">
+<div class="form-group">
+    <input type="hidden" name="id" value="<?= (int) $auteur->id ?>" />
+    <input type="submit" class="btn btn-danger" name="del" value="Oui" />
+    <input type="submit" class="btn btn-success" name="del" value="Non" />
+</div>
+</form>

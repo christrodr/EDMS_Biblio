@@ -1,0 +1,16 @@
+<?php
+
+$title = 'Gestion des auteurs de la bibliothèque';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<p>
+    Dans cette partie de l'application vous pourrez faire vos recherches par auteur de la bibliothéque.<br />
+    Cliquez sur le nom de la auteur désirée pour lister les documents de celui-ci.
+</p>
+<p>
+    <a class="btn btn-lg btn-primary" role="button" href="<?= $this->url('auteur', ['action' => 'add']) ?>">Auteur 1</a>
+    <a class="btn btn-lg btn-primary" role="button" href="<?= $this->url('auteur', ['action' => 'add']) ?>">Auteur 2</a>
+    <a class="btn btn-lg btn-primary" role="button" href="<?= $this->url('auteur', ['action' => 'add']) ?>">Auteur 3</a>
+    <a class="btn btn-lg btn-primary" role="button" href="<?= $this->url('auteur', ['action' => 'add']) ?>">Auteur 4</a>
+</p>

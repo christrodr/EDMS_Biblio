@@ -78,6 +78,20 @@ return [
 		    ],
 		],
 	    ],
+	    'auteur' => [
+		'type' => Segment::class,
+		'options' => [
+		    'route' => '/auteur[/:action[/:id]]',
+		    'constraints' => [
+			'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+			'id' => '[0-9]+',
+		    ],
+		    'defaults' => [
+			'controller' => Controller\AuteurController::class,
+			'action' => 'index',
+		    ],
+		],
+	    ],
 	],
     ],
 //    'controllers' => [
@@ -188,6 +202,33 @@ return [
 		    [
 			'label' => 'Archiver',
 			'route' => 'typedoc',
+			'action' => 'archive',
+		    ],
+		],
+	    ],
+	    [
+		'label' => 'Auteurs',
+		'route' => 'auteur',
+		'action' => 'list',
+		'pages' => [
+		    [
+			'label' => 'Accueil auteur',
+			'route' => 'auteur',
+			'action' => 'index',
+		    ],
+		    [
+			'label' => 'Lister',
+			'route' => 'auteur',
+			'action' => 'list',
+		    ],
+		    [
+			'label' => 'Editer',
+			'route' => 'auteur',
+			'action' => 'edit',
+		    ],
+		    [
+			'label' => 'Archiver',
+			'route' => 'auteur',
 			'action' => 'archive',
 		    ],
 		],

@@ -54,6 +54,16 @@ class Module implements ConfigProviderInterface {
 		    $resultSetPrototype->setArrayObjectPrototype(new Model\Typedoc());
 		    return new TableGateway('typedoc', $dbAdapter, null, $resultSetPrototype);
 		},
+		Model\AuteurTable::class => function($container) {
+		    $tableGateway = $container->get(Model\AuteurTableGateway::class);
+		    return new Model\AuteurTable($tableGateway);
+		},
+		Model\AuteurTableGateway::class => function ($container) {
+		    $dbAdapter = $container->get(AdapterInterface::class);
+		    $resultSetPrototype = new ResultSet();
+		    $resultSetPrototype->setArrayObjectPrototype(new Model\Auteur());
+		    return new TableGateway('auteur', $dbAdapter, null, $resultSetPrototype);
+		},
 	    ],
 	];
     }
@@ -77,6 +87,11 @@ class Module implements ConfigProviderInterface {
 		Controller\TypedocController::class => function($container) {
 		    return new Controller\TypedocController(
 			    $container->get(Model\TypedocTable::class)
+		    );
+		},
+		Controller\AuteurController::class => function($container) {
+		    return new Controller\AuteurController(
+			    $container->get(Model\AuteurTable::class)
 		    );
 		},
 	    ],

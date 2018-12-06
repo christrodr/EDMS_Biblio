@@ -19,5 +19,10 @@ $(document).ready(function () {
             "sUrl": "/js/plugins/dataTable/fr_FR.txt"
         }
     });
+    $('#auteursList').DataTable({
+        "oLanguage": {
+            "sUrl": "/js/plugins/dataTable/fr_FR.txt"
+        }
+    });
 });
 
