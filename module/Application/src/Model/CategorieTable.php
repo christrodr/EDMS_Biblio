@@ -57,11 +57,11 @@ class CategorieTable {
 	    if (!$this->getByNameCategorie($categorie->nom)) {
 		$this->tableGateway->insert($data);
 		$message = new FlashMessenger();
-		$message->addSuccessMessage('La categorie "' . $data['nom'] . '" à été créée.');
+		$message->addSuccessMessage('La catégorie "' . $data['nom'] . '" à été créée.');
 	    } else {
 //		$this->tableGateway->insert($data);
 		$message = new FlashMessenger();
-		$message->addErrorMessage('La categorie "' . $data['nom'] . '" existe déjà.');
+		$message->addErrorMessage('La catégorie "' . $data['nom'] . '" existe déjà.');
 	    }
 
 	    return;
@@ -69,7 +69,7 @@ class CategorieTable {
 
 	if (!$this->getCategorie($id)) {
 	    throw new RuntimeException(sprintf(
-		    'La categorie avec cet identifiant %d; n\'existe pas', $id
+		    'La catégorie avec cet identifiant %d; n\'existe pas', $id
 	    ));
 	}
 
@@ -80,10 +80,10 @@ class CategorieTable {
 
 	    $this->tableGateway->update($data, ['id_Categorie' => $id]);
 	    $message = new FlashMessenger();
-	    $message->addSuccessMessage('La categorie "' . $oldname . '" à été modifiée en "' . $data['nom'] . '".');
+	    $message->addSuccessMessage('La catégorie "' . $oldname . '" à été modifiée en "' . $data['nom'] . '".');
 	} else {
 	    $message = new FlashMessenger();
-	    $message->addErrorMessage('La categorie "' . $data['nom'] . '" existe déjà.');
+	    $message->addErrorMessage('La catégorie "' . $data['nom'] . '" existe déjà.');
 	}
     }
 
@@ -91,11 +91,11 @@ class CategorieTable {
 
 	if (!$this->getCategorie($id)) {
 	    throw new RuntimeException(sprintf(
-		    'La categorie avec cet identifiant %d; n\'existe pas', $id
+		    'La catégorie avec cet identifiant %d; n\'existe pas', $id
 	    ));
 	}
 	$message = new FlashMessenger();
-	$message->addErrorMessage('La categorie "' . $this->getCategorie($id)->nom . '" a été archivée.');
+	$message->addErrorMessage('La catégorie "' . $this->getCategorie($id)->nom . '" a été archivée.');
 	$this->tableGateway->update(['archiver' => 'oui'], ['id_Categorie' => $id]);
     }
 
