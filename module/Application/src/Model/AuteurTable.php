@@ -81,7 +81,6 @@ class AuteurTable {
 	    //recuperation de l'ancien nom
 	    $oldauteur = $this->getAuteur($id);
 	    $oldname = $oldauteur->nom;
-
 	    $this->tableGateway->update($data, ['id_Auteur' => $id]);
 	    $message = new FlashMessenger();
 	    $message->addSuccessMessage('L\'auteur "' . $oldname . '" à été modifié en "' . $data['nom'] . '".');

@@ -22,7 +22,7 @@ class AuteurForm extends Form {
 	]);
 	$this->add([
 	    'name' => 'nom',
-	    'type' => 'text',
+	    'type' => 'textarea',
 	    'options' => [
 		'label' => 'Nom de l\'auteur',
 	    ],
