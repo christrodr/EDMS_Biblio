@@ -1,0 +1,54 @@
+<?php
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+$title = 'Connexion';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<?php
+$user = $form->get('user');
+$user->setAttribute('class', 'form-control');
+$user->setAttribute('placeholder', 'Login');
+
+// This provides a default CSS class and placeholder text for the artist element:
+$pass = $form->get('pass');
+$pass->setAttribute('class', 'form-control');
+$pass->setAttribute('placeholder', 'Password');
+
+$rememberme = $form->get('rememberme');
+$rememberme->setAttribute('class', 'form-control-check');
+
+
+// This provides CSS classes for the submit button:
+$submit = $form->get('submit');
+$submit->setAttribute('class', 'btn btn-primary');
+
+$form->setAttribute('action', $this->url('auth', ['action' => 'index']));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+?>
+<div class="form-group">
+    <?= $this->formLabel($user) ?>
+    <?= $this->formElement($user) ?>
+    <?= $this->formElementErrors()->render($user, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($pass) ?>
+    <?= $this->formElement($pass) ?>
+    <?= $this->formElementErrors()->render($pass, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($rememberme) ?>
+    <?= $this->formElement($rememberme) ?>
+</div>
+
+<?php
+echo $this->formSubmit($submit);
+echo $this->form()->closeTag();

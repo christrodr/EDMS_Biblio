@@ -1,0 +1,24 @@
+<?php
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+$auth = new Zend\Authentication\AuthenticationService();
+if ($auth->hasIdentity()) {?>
+    <ul class="nav navbar-nav navbar-right">
+	<li>
+	    <a href="/auth/logout">Deconnexion</a>
+	</li>
+    </ul>
+<?php
+}else{
+?>
+    <ul class="nav navbar-nav navbar-right">
+	<li>
+	    <a href="/auth">Connexion</a>
+	</li>
+    </ul>
+<?php
+}
+?>
